@@ -1,0 +1,10 @@
+name: BetaKeySystem
+version: 1.0
+main: de.coooding.betakey.BetaKey
+author: Coooding
+commands:
+  createkey:
+  togglebeta:
+  removekey:
+  removebetaplayer:
+  addbetaplayer:

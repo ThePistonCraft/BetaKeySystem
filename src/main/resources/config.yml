@@ -1,0 +1,20 @@
+# Settings
+Settings:
+  enable: true
+  keyLength: 15
+# Editable the Plugin Messages
+Messages:
+  prefix: '&9BetaKey&8: &7'
+  noperm: '&cDu hast dazu keine Rechte.'
+  commandUse: 'Bitte benutze: &e%command%'
+  kickOverdrawn: "&7Du wurdest gekickt! Grund: &eZu viele BetaKey versuche."
+  keyWasCreated: "Der BetaKey wurde &aerfolgreich &7erstellt."
+  keyCreated: "Der BetaKey lautet&8: &e%key%"
+  notInBeta: "Bitte gebe deinen &eBetaKey &7ein."
+  keyNotExist: "Der BetaKey ist nicht registriert."
+  keyUsed: "Du hast deinen BetaKey &aerfolgreich &7benutzt."
+  removeKey: "Du hast den BetaKey &aerfolgreich &7gelöscht."
+  setBetaOn: "Du hast die BetaPhase &aaktiviert."
+  setBetaOff: "Du hast die BetaPhase &cdeaktiviert."
+  removeBetaPlayer: "Du hast den Spieler &e%playerName% &7seinen Beta Zugang gesperrt."
+  addBetaPlayer: "Du hast den Spieler &e%playerName% &7einen Beta Zugang gegeben."
