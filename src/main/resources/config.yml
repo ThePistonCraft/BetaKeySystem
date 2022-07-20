@@ -10,7 +10,7 @@ Messages:
   noperm: '&cDu hast dazu keine Rechte.'
   commandUse: 'Bitte benutze: &e%command%'
   kickOverdrawn: "&7Du wurdest gekickt! Grund: &eZu viele BetaKey versuche."
-  kickTimeout: "&7Du wurdest gekickt! Grund: &eDu hast zu lange gebraucht den Key einzulösen!"
+  kickTimeout: "&7Du wurdest gekickt! Grund: &eDu hast zu lange gebraucht den Key einzugeben!"
   keyWasCreated: "Der BetaKey wurde &aerfolgreich &7erstellt."
   keyCreated: "Der BetaKey lautet&8: &e%key%"
   notInBeta: "Bitte gebe deinen &eBetaKey &7ein."
