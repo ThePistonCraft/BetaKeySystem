@@ -2,12 +2,15 @@
 Settings:
   enable: true
   keyLength: 15
+# The Timeout is in Seconds!
+  playerTimeout: 120
 # Editable the Plugin Messages
 Messages:
   prefix: '&9BetaKey&8: &7'
   noperm: '&cDu hast dazu keine Rechte.'
   commandUse: 'Bitte benutze: &e%command%'
   kickOverdrawn: "&7Du wurdest gekickt! Grund: &eZu viele BetaKey versuche."
+  kickTimeout: "&7Du wurdest gekickt! Grund: &eDu hast zu lange gebraucht den Key einzulösen!"
   keyWasCreated: "Der BetaKey wurde &aerfolgreich &7erstellt."
   keyCreated: "Der BetaKey lautet&8: &e%key%"
   notInBeta: "Bitte gebe deinen &eBetaKey &7ein."
