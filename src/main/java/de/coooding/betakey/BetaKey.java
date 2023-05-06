@@ -22,7 +22,7 @@ public class BetaKey extends JavaPlugin {
     public void onEnable() {
         instance = this;
         Bukkit.getConsoleSender().sendMessage("§aThe BetaKeySystem was created by §eCoooding");
-        Bukkit.getConsoleSender().sendMessage("§aThe Support §bDiscord§7: §ehttps://discord.gg/8WjfsxZEzX");
+        Bukkit.getConsoleSender().sendMessage("§aThe Support §bDiscord§7: §ehttps://discord.gg/kTwd5grCEw");
 
         this.init();
     }

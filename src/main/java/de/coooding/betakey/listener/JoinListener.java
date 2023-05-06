@@ -1,6 +1,7 @@
 package de.coooding.betakey.listener;
 
 import de.coooding.betakey.BetaKey;
+import lombok.Getter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,7 +18,9 @@ public class JoinListener implements Listener {
     public static ArrayList<Player> inputKey = new ArrayList<>();
 
     int timeOutSeconds = BetaKey.getInstance().getConfig().getInt("Settings.playerTimeout");
-    int task;
+
+    @Getter
+    public static int task;
 
     @EventHandler
     public void playerJoin(PlayerJoinEvent event) {

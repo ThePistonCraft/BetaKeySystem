@@ -8,11 +8,15 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitTask;
 
 public class ChatListener implements Listener {
 
     int invalidUses = 0;
     int task;
+    int kickOverdrawn;
+    int removePotion;
+
 
     @EventHandler
     public void playerChat(AsyncPlayerChatEvent event) {
@@ -29,22 +33,36 @@ public class ChatListener implements Listener {
                 invalidUses++;
 
                 if(invalidUses == 3) {
-                    Bukkit.getScheduler().runTask(BetaKey.getInstance(), new Runnable() {
+                    kickOverdrawn = BetaKey.getInstance().getServer().getScheduler().scheduleSyncRepeatingTask((Plugin) BetaKey.getInstance(), new Runnable() {
                         public void run() {
+                            System.out.println("kickOverdrawn");
                             String kickReason = BetaKey.getInstance().getConfig().getString("Messages.kickOverdrawn").replaceAll("&", "§");
                             player.kickPlayer(kickReason);
+                            BetaKey.getInstance().getServer().getScheduler().cancelTask(removePotion);
+                            BetaKey.getInstance().getServer().getScheduler().cancelTask(JoinListener.getTask());
+                            BetaKey.getInstance().getServer().getScheduler().cancelTask(kickOverdrawn);
                         }
-                    });
+                    }, 0L, 100L);
                 }
                 return;
             }
 
             BetaKey.getInstance().getKeyProvider().addPlayerBeta(player.getUniqueId());
             BetaKey.getInstance().getKeyProvider().removeBetaKey(message);
-            player.removePotionEffect(PotionEffectType.BLINDNESS);
+
+            removePotion = BetaKey.getInstance().getServer().getScheduler().scheduleSyncRepeatingTask((Plugin) BetaKey.getInstance(), new Runnable() {
+                public void run() {
+                    System.out.println("remove Blindness");
+                    player.removePotionEffect(PotionEffectType.BLINDNESS);
+                    BetaKey.getInstance().getServer().getScheduler().cancelTask(JoinListener.getTask());
+                    BetaKey.getInstance().getServer().getScheduler().cancelTask(kickOverdrawn);
+                    BetaKey.getInstance().getServer().getScheduler().cancelTask(removePotion);
+
+                }
+            },0L, 100L);
+
             player.sendMessage(BetaKey.getInstance().getConfig().getString("Messages.prefix").replaceAll("&", "§") +
                     BetaKey.getInstance().getConfig().getString("Messages.keyUsed").replaceAll("&", "§"));
-
             JoinListener.inputKey.remove(player);
         }
 
@@ -52,6 +70,11 @@ public class ChatListener implements Listener {
             @Override
             public void run() {
                 event.setCancelled(false);
+                try {
+                    BetaKey.getInstance().getServer().getScheduler().cancelTask(JoinListener.getTask());
+                    BetaKey.getInstance().getServer().getScheduler().cancelTask(kickOverdrawn);
+                    BetaKey.getInstance().getServer().getScheduler().cancelTask(removePotion);
+                } catch (NullPointerException ignored) { }
                 BetaKey.getInstance().getServer().getScheduler().cancelTask(task);
             }
         }, 0L, 100L);
