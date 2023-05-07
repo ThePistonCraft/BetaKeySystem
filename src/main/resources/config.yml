@@ -8,6 +8,7 @@ Settings:
 Messages:
   prefix: '&9BetaKey&8: &7'
   noperm: '&cDu hast dazu keine Rechte.'
+  playerIsNull: '&cDer Spieler ist nicht Online.'
   commandUse: 'Bitte benutze: &e%command%'
   kickOverdrawn: "&7Du wurdest gekickt! Grund: &eZu viele BetaKey versuche."
   kickTimeout: "&7Du wurdest gekickt! Grund: &eDu hast zu lange gebraucht den Key einzugeben!"
@@ -21,3 +22,5 @@ Messages:
   setBetaOff: "Du hast die BetaPhase &cdeaktiviert."
   removeBetaPlayer: "Du hast den Spieler &e%playerName% &7seinen Beta Zugang gesperrt."
   addBetaPlayer: "Du hast den Spieler &e%playerName% &7einen Beta Zugang gegeben."
+  addedOfflineBetaPlayer: "Der hinzugefügte Spieler ist &cOFFLINE§7, der Spieler wurde zur liste &aerfolgreich &7hinzugefügt."
+  notifyAddedPlayer: "Du wurdest &aerfolgreich &7zur Beta hinzugefügt!"

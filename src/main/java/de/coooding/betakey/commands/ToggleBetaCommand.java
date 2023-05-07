@@ -28,14 +28,16 @@ public class ToggleBetaCommand implements CommandExecutor {
             BetaKey.getInstance().getKeyProvider().setBeta(true);
             player.sendMessage(BetaKey.getInstance().getConfig().getString("Messages.prefix").replaceAll("&", "§") +
                     BetaKey.getInstance().getConfig().getString("Messages.setBetaOn").replaceAll("&", "§"));
+            return true;
         }
         if (args[0].equalsIgnoreCase("off")) {
             BetaKey.getInstance().getKeyProvider().setBeta(false);
             player.sendMessage(BetaKey.getInstance().getConfig().getString("Messages.prefix").replaceAll("&", "§") +
                     BetaKey.getInstance().getConfig().getString("Messages.setBetaOff").replaceAll("&", "§"));
+            return true;
         } else {
             player.sendMessage(BetaKey.getInstance().getConfig().getString("Messages.prefix").replaceAll("&", "§") +
-                    BetaKey.getInstance().getConfig().getString("Messages.commandUse").replaceAll("%command%", "/toggelbeta <on/off>"));
+                    BetaKey.getInstance().getConfig().getString("Messages.commandUse").replaceAll("&", "§").replaceAll("%command%", "/toggelbeta <on/off>"));
         }
 
         return false;

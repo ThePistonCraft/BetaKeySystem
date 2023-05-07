@@ -1,14 +1,12 @@
 package de.coooding.betakey.listener;
 
 import de.coooding.betakey.BetaKey;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.scheduler.BukkitTask;
 
 public class ChatListener implements Listener {
 
@@ -35,7 +33,6 @@ public class ChatListener implements Listener {
                 if(invalidUses == 3) {
                     kickOverdrawn = BetaKey.getInstance().getServer().getScheduler().scheduleSyncRepeatingTask((Plugin) BetaKey.getInstance(), new Runnable() {
                         public void run() {
-                            System.out.println("kickOverdrawn");
                             String kickReason = BetaKey.getInstance().getConfig().getString("Messages.kickOverdrawn").replaceAll("&", "§");
                             player.kickPlayer(kickReason);
                             BetaKey.getInstance().getServer().getScheduler().cancelTask(removePotion);
@@ -52,7 +49,6 @@ public class ChatListener implements Listener {
 
             removePotion = BetaKey.getInstance().getServer().getScheduler().scheduleSyncRepeatingTask((Plugin) BetaKey.getInstance(), new Runnable() {
                 public void run() {
-                    System.out.println("remove Blindness");
                     player.removePotionEffect(PotionEffectType.BLINDNESS);
                     BetaKey.getInstance().getServer().getScheduler().cancelTask(JoinListener.getTask());
                     BetaKey.getInstance().getServer().getScheduler().cancelTask(kickOverdrawn);
